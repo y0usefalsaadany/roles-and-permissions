@@ -30,8 +30,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $permissions = Permission::insert($data['permissions']);
+        $permissions = Permission::insert($request->permissions);
         $data = [];
         foreach ($request->permissions as $perm) {
             $data[] = $perm['name'];

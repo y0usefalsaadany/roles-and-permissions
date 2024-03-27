@@ -13,8 +13,8 @@ class RoleController extends Controller
     public function index()
     {
         return response()->json([
-            "data"=>Role::select('id','name')->get()
-            ]);
+            "data" => Role::select('id', 'name')->get()
+        ]);
     }
 
     /**
@@ -32,8 +32,8 @@ class RoleController extends Controller
     {
         $roles = Role::create($request->all());
         return response()->json([
-            "message"=>"created"
-            ]);
+            "message" => "created"
+        ]);
     }
 
     /**

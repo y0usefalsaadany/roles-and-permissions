@@ -15,7 +15,8 @@ class PostPolicy
     public function viewAny(User $user): bool
     {
         // return true;
-        return $user->role == "admin";
+        return $user->hasPermission("show_post");
+        // return $user->role == "admin";
     }
 
     /**
@@ -31,6 +32,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
+        return $user->hasPermission("create_post");
         return $user->role == "admin";
     }
 

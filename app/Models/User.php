@@ -63,4 +63,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Role::class);
     }
+    public function permissions(){
+    return $this->role?->permissions?->pluck("name")->toArray() ?? [];
+    }
+    public function hasPermission(string $permissionCheck): bool{
+    $userPermissions = $this->permissions();
+    return in_array($permissionCheck,$userPermissions);
+
+    }
 }
